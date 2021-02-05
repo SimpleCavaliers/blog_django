@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    {% for comment in comments %}
+    <li>
+        <a href="{{comment.target}}">{{comment.nickname}}<a/>
+            : {% autoescape off %}
+              {{ comment.content }}
+              {% endautoescape %}
+    {% endfor %}
+</ul>
+</body>
+</html>
