@@ -1,2 +1,2 @@
 # blog_django
-practice
+database settings are needed to set by yourself

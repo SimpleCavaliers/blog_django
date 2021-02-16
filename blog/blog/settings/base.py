@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 
 # Database
+# 数据库设置已屏蔽
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 # DATABASES = {
