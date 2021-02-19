@@ -1,4 +1,3 @@
-# 注意代码规范要求的顺序(看一下)
 from datetime import date
 from django.db.models import Q, F
 from django.shortcuts import get_object_or_404

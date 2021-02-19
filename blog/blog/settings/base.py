@@ -10,16 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '!pmth3qh=izw2j!11^1pc3tc-bbwa3b84t!%9t!bq-tnesp@5r'
+
+XADMIN_TITLE = 'SimpleBlog 管理后台'
+XADMIN_FOOTER_TITLE = 'power by xxxx.com'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -27,6 +30,19 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 800,
+        'tabSpace': 4,
+        'extraPlugins': 'codesnippet',  # 配置代码插件
+    }
+}
+# 文件存放位置
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CKEDITOR_UPLOAD_PATH = 'article_images'
 # Application definition
 # 前面的app会覆盖后面内容相同的app
 # 注册寻找路径
@@ -35,6 +51,12 @@ INSTALLED_APPS = [
     'my_blog',
     'config',
     'comment',
+    'xadmin',
+    'crispy_forms',
+    'dal',
+    'dal_select2',
+    'ckeditor',
+    'ckeditor_uploader',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,7 +67,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'my_blog.middleware.user_id.UserIDMiddleware',
+    'my_blog.middleware.user_id.UserIDMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
